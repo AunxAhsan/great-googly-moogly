@@ -5,8 +5,7 @@ import "./style.css";
 export default function Home() {
   const { isLoaded, url, loadError } = useLoadScript({
     // replace the below with your own API key
-    // should be googleMapsApiKey: "ADASD!@DQ!DASD!@@DQWWD!@D!@D@!D"
-    googleMapsApiKey: "YOUR API KEY HERE",
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
   });
 
   //shows loading screen while map is loading
