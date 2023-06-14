@@ -1,5 +1,5 @@
 import React, { useMemo, useRef } from "react";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 import "./style.css";
 
 export default function Home() {
@@ -23,6 +23,7 @@ export default function Home() {
 function Map() {
   //sets the center of the map to NYC
   const center = useMemo(() => ({ lat: 40.7128, lng: -74.006 }), []);
+  const markerPositions = useMemo(() => [{ lat: 40.7128, lng: -74.006 }, {lat: 40.7, lng: -74.1}, {lat: 40.8, lng: -74.3}], []);
 
   return (
     <div className="map-container">
@@ -31,7 +32,10 @@ function Map() {
         center={center}
         mapContainerClassName="map-container"
       >
-        <Marker position={center} />
+        {markerPositions.map((position) => (
+          <MarkerF position={position} />
+        ))}
+
       </GoogleMap>
     </div>
   );
